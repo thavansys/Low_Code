@@ -1,0 +1,3829 @@
+/*
+ * Author       : praburonaldo03
+ * Generated on : 20-Oct-2026 17:56:45
+ * Version      : 1.0
+ */
+ application "Academic Project Management System"
+ {
+ 	date format = "dd-MMM-yyyy"
+ 	time zone = "America/Los_Angeles"
+ 	time format = "24-hr"
+
+ 	forms
+	{
+		form meeting_notes
+		{
+			displayname = "Meeting Notes"
+			success message = "Notes Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			project
+			(
+				type = list	
+				displayname = "Project"
+				values  = project.ID
+    			displayformat = [project_title]
+				allow new entries
+				[
+					displayname = "Add New"
+				]
+				sortorder = ascending
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			meeting_date
+			(
+    			type = datetime
+				displayname = "Meeting Date"
+				timedisplayoptions = "hh:mm:ss"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			meeting_type
+			(
+				type = picklist
+				displayname = "Meeting Type"
+				values = {"Progress Review","Final Review","Team Meeting","Mentor Review"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			attendees
+			(
+				type = list	
+				displayname = "Attendees"
+				values  = student_profile.ID
+    			displayformat = [full_name.first_name]
+				allow new entries
+				[
+					displayname = "Add New"
+				]
+				sortorder = ascending
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			agenda
+			(
+    			type = textarea
+				displayname = "Agenda"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			discussion_notes
+			(
+    			type = textarea
+				displayname = "Discussion Notes"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			decisions_made
+			(
+    			type = textarea
+				displayname = "Decisions Made"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			action_items
+			(
+    			type = textarea
+				displayname = "Action Items"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			next_meeting_date
+			(
+    			type = datetime
+				displayname = "Next Meeting Date"
+				timedisplayoptions = "hh:mm:ss"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form milestone
+		{
+			displayname = "Milestone"
+			success message = "Milestone Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			project
+			(
+				type = list	
+				displayname = "Project"
+				values  = project.ID
+    			displayformat = [project_title]
+				allow new entries
+				[
+					displayname = "Add New"
+				]
+				sortorder = ascending
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			milestone_title
+			(
+    			type = text
+				displayname = "Milestone Title"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			milestone_description
+			(
+    			type = textarea
+				displayname = "Milestone Description"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			planned_date
+			(
+    			type = date
+				displayname = "Planned Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			actual_completion_date
+			(
+    			type = date
+				displayname = "Actual Completion Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			milestone_status
+			(
+				type = picklist
+				displayname = "Milestone Status"
+				values = {"Upcoming","Delayed","Completed","In Progress"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			completion_notes
+			(
+    			type = textarea
+				displayname = "Completion Notes"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			supporting_document
+			(
+    			type = url
+				displayname = "Supporting Document"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form progress_update
+		{
+			displayname = "Progress Update"
+			success message = "Progress Update Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			project
+			(
+				type = list	
+				displayname = "Project"
+				values  = project.ID
+    			displayformat = [project_title]
+				allow new entries
+				[
+					displayname = "Add New"
+				]
+				sortorder = ascending
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			related_task
+			(
+				type = list	
+				displayname = "Related Task"
+				values  = task.ID
+    			displayformat = [task_title]
+				allow new entries
+				[
+					displayname = "Add New"
+				]
+				sortorder = ascending
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			updated_by
+			(
+    			type = text
+				displayname = "Updated By"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			update_date
+			(
+    			type = datetime
+				displayname = "Update Date"
+				timedisplayoptions = "hh:mm:ss"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			progress_percentage
+			(
+    			type = percentage
+				displayname = "Progress Percentage"
+				maxchar = 16
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			work_completed
+			(
+    			type = textarea
+				displayname = "Work Completed"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			next_steps
+			(
+    			type = textarea
+				displayname = "Next Steps"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			challenges_faced
+			(
+    			type = textarea
+				displayname = "Challenges Faced"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			help_required
+			(
+    			type = checkbox
+				displayname = "Help Required"
+				initial value = false
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			supporting_file
+			(
+    			type = url
+				displayname = "Supporting File"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form project
+		{
+			displayname = "Project"
+			success message = "Project Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			project_title
+			(
+    			type = text
+				displayname = "Project Title"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			project_category
+			(
+				type = picklist
+				displayname = "Project Category"
+				values = {"Mobile Application","Data Science","AI/ML","Cybersecurity","Research","Web Development","IoT","Other"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			project_description
+			(
+    			type = textarea
+				displayname = "Project Description"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			project_guide
+			(
+    			type = text
+				displayname = "Project Guide"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			team_members
+			(
+				type = list	
+				displayname = "Team Members"
+				values  = student_profile.ID
+    			displayformat = [full_name.first_name]
+				allow new entries
+				[
+					displayname = "Add New"
+				]
+				sortorder = ascending
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			start_date
+			(
+    			type = date
+				displayname = "Start Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			target_deadline
+			(
+    			type = date
+				displayname = "Target Deadline"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			project_status
+			(
+				type = picklist
+				displayname = "Project Status"
+				values = {"Submitted","On Hold","Completed","In Progress","Planning"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			overall_progress
+			(
+    			type = percentage
+				displayname = "Overall Progress"
+				maxchar = 16
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			priority
+			(
+				type = picklist
+				displayname = "Priority"
+				values = {"High","Low","Medium","Critical"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			technology_stack
+			(
+				type = list	
+				displayname = "Technology Stack"
+				values = {"Data Science","Java","Cloud Computing","AI","Cybersecurity","React","NodeJS","Python","ML","IoT"}
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			repository_url
+			(
+    			type = url
+				displayname = "Repository URL"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			project_document
+			(
+    			type = url
+				displayname = "Project Document"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			final_report
+			(
+    			type = url
+				displayname = "Final Report"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			created_by
+			(
+    			type = text
+				displayname = "Created By"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+			blueprint components
+			{
+				stages = {"Project Initiated","Planning Phase","Project Rejected","In Progress","Under Review","On Hold","Final Report Submitted","Final Review","Completed"}
+			}
+		}
+		form student_profile
+		{
+			displayname = "Student Profile"
+			success message = "Student Profile Added Successfully"
+			Section1
+			(
+				type = section
+				displayname = "Section"
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			full_name
+			(
+    			type = name
+				displayname = "Full Name"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+	     			 visibility = false
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			college_email
+			(
+    			type = email
+				displayname = "College Email"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			department
+			(
+				type = picklist
+				displayname = "Department"
+				values = {"Computer Science","Electronics","Electrical","Information Technology","Other"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			year_of_study
+			(
+				type = picklist
+				displayname = "Year of Study"
+				values = {"4th Year","3rd Year","2nd Year","1st Year"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			section
+			(
+    			type = text
+				displayname = "Section"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			skills
+			(
+				type = list	
+				displayname = "Skills"
+				values = {"Data Science","Java","Cloud Computing","AI","Cybersecurity","React","NodeJS","Python","ML","IoT"}
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			profile_photo
+			(
+    			type = url
+				displayname = "Profile Photo"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			created_by
+			(
+    			type = text
+				displayname = "Created By"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form task
+		{
+			displayname = "Task"
+			success message = "Task Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			task_title
+			(
+    			type = text
+				displayname = "Task Title"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			project
+			(
+				type = list	
+				displayname = "Project"
+				values  = project.ID
+    			displayformat = [project_title]
+				allow new entries
+				[
+					displayname = "Add New"
+				]
+				sortorder = ascending
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			task_description
+			(
+    			type = textarea
+				displayname = "Task Description"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			assigned_student
+			(
+				type = list	
+				displayname = "Assigned Student"
+				values  = student_profile.ID
+    			displayformat = [full_name.first_name]
+				allow new entries
+				[
+					displayname = "Add New"
+				]
+				sortorder = ascending
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			created_date
+			(
+    			type = date
+				displayname = "Created Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			start_date
+			(
+    			type = date
+				displayname = "Start Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			due_date
+			(
+    			type = date
+				displayname = "Due Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			task_status
+			(
+				type = picklist
+				displayname = "Task Status"
+				values = {"To Do","In Review","Completed","In Progress","Blocked"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			priority
+			(
+				type = picklist
+				displayname = "Priority"
+				values = {"High","Low","Medium","Critical"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			completion_percentage
+			(
+    			type = percentage
+				displayname = "Completion Percentage"
+				maxchar = 16
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			estimated_hours
+			(
+				type = number
+				displayname = "Estimated Hours"
+				maxchar = 19
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			actual_hours
+			(
+				type = number
+				displayname = "Actual Hours"
+				maxchar = 19
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			blocker_description
+			(
+    			type = textarea
+				displayname = "Blocker Description"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			task_attachment
+			(
+    			type = url
+				displayname = "Task Attachment"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			mentor_comments
+			(
+    			type = textarea
+				displayname = "Mentor Comments"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+			blueprint components
+			{
+				stages = {"Task Created","Task Assigned","Task Draft","Task In Progress","Task On Hold","Task Reassigned","Task In Review","Task Reopened","Task Cancelled","Task Approved","Task Completed"}
+			}
+		}
+	}
+	reports
+	{
+		list task_Report
+		{
+			displayName = "All Tasks"
+			show all rows from task    
+			(
+				task_title as "Task Title"
+				project as "Project"
+				task_description as "Task Description"
+				assigned_student as "Assigned Student"
+				created_date as "Created Date"
+				start_date as "Start Date"
+				due_date as "Due Date"
+				task_status as "Task Status"
+				priority as "Priority"
+				completion_percentage as "Completion Percentage"
+				(
+					display = total,average,min,max	
+				)
+				estimated_hours as "Estimated Hours"
+				actual_hours as "Actual Hours"
+				blocker_description as "Blocker Description"
+				task_attachment as "Task Attachment"
+				mentor_comments as "Mentor Comments"
+			)
+			conditional formatting
+			(
+				"New Formatting1"
+				{
+				condition = (task_status == "In Progress")
+				fields = [task_status]
+				format = "color:#ffffff;background-color:#765f89;"
+				}
+				"New Formatting2"
+				{
+				condition = (task_status == "In Review")
+				fields = [task_status]
+				format = "color:#000000;background-color:#1bbc9b;"
+				}
+				"New Formatting3"
+				{
+				condition = (task_status == "To Do")
+				fields = [task_status]
+				format = "color:#ffffff;background-color:#e84c3d;"
+				}
+			)
+		}
+		kanban task_by_task_status
+		{
+			displayName = "Task Statuses"
+			show all rows from task    
+			(
+				task_title as "Task Title"
+				project as "Project"
+				task_description as "Task Description"
+				assigned_student as "Assigned Student"
+				created_date as "Created Date"
+				start_date as "Start Date"
+				due_date as "Due Date"
+				task_status as "Task Status"
+				priority as "Priority"
+				completion_percentage as "Completion Percentage"
+				(
+					display = total,average,min,max	
+				)
+				estimated_hours as "Estimated Hours"
+				actual_hours as "Actual Hours"
+				blocker_description as "Blocker Description"
+				task_attachment as "Task Attachment"
+				mentor_comments as "Mentor Comments"
+			)
+			options
+			(
+	 			display field = task_status
+	 		)
+		}
+		list progress_update_Report
+		{
+			displayName = "All Progress Updates"
+			show all rows from progress_update    
+			(
+				project as "Project"
+				related_task as "Related Task"
+				updated_by as "Updated By"
+				update_date as "Update Date"
+				progress_percentage as "Progress Percentage"
+				(
+					display = total,average,min,max	
+				)
+				work_completed as "Work Completed"
+				next_steps as "Next Steps"
+				challenges_faced as "Challenges Faced"
+				help_required as "Help Required"
+				supporting_file as "Supporting File"
+			)
+		}
+		list meeting_notes_Report
+		{
+			displayName = "All Notes"
+			show all rows from meeting_notes    
+			(
+				project as "Project"
+				meeting_date as "Meeting Date"
+				meeting_type as "Meeting Type"
+				attendees as "Attendees"
+				agenda as "Agenda"
+				discussion_notes as "Discussion Notes"
+				decisions_made as "Decisions Made"
+				action_items as "Action Items"
+				next_meeting_date as "Next Meeting Date"
+			)
+			conditional formatting
+			(
+				"New Formatting1"
+				{
+				condition = (meeting_type == "Final Review")
+				fields = [meeting_type]
+				format = "color:#ffffff;background-color:#765f89;"
+				}
+				"New Formatting2"
+				{
+				condition = (meeting_type == "Mentor Review")
+				fields = [meeting_type]
+				format = "color:#000000;background-color:#1bbc9b;"
+				}
+			)
+		}
+		kanban meeting_notes_by_meeting_type
+		{
+			displayName = "Meeting Types"
+			show all rows from meeting_notes    
+			(
+				project as "Project"
+				meeting_date as "Meeting Date"
+				meeting_type as "Meeting Type"
+				attendees as "Attendees"
+				agenda as "Agenda"
+				discussion_notes as "Discussion Notes"
+				decisions_made as "Decisions Made"
+				action_items as "Action Items"
+				next_meeting_date as "Next Meeting Date"
+			)
+			options
+			(
+	 			display field = meeting_type
+	 		)
+		}
+		list student_profile_Report
+		{
+			displayName = "All Student Profiles"
+			show all rows from student_profile    
+			(
+				full_name  as "Full Name"
+				college_email as "College Email"
+				department as "Department"
+				year_of_study as "Year of Study"
+				section as "Section"
+				skills as "Skills"
+				profile_photo as "Profile Photo"
+				created_by as "Created By"
+			)
+			conditional formatting
+			(
+				"New Formatting1"
+				{
+				condition = (department == "Electrical")
+				fields = [department]
+				format = "color:#ffffff;background-color:#765f89;"
+				}
+				"New Formatting2"
+				{
+				condition = (department == "Information Technology")
+				fields = [department]
+				format = "color:#000000;background-color:#1bbc9b;"
+				}
+				"New Formatting3"
+				{
+				condition = (department == "Other")
+				fields = [department]
+				format = "color:#ffffff;background-color:#e84c3d;"
+				}
+			)
+		}
+		kanban student_profile_by_department
+		{
+			displayName = "Departments"
+			show all rows from student_profile    
+			(
+				full_name  as "Full Name"
+				college_email as "College Email"
+				department as "Department"
+				year_of_study as "Year of Study"
+				section as "Section"
+				skills as "Skills"
+				profile_photo as "Profile Photo"
+				created_by as "Created By"
+			)
+			options
+			(
+	 			display field = department
+	 		)
+		}
+		list milestone_Report
+		{
+			displayName = "All Milestones"
+			show all rows from milestone    
+			(
+				project as "Project"
+				milestone_title as "Milestone Title"
+				milestone_description as "Milestone Description"
+				planned_date as "Planned Date"
+				actual_completion_date as "Actual Completion Date"
+				milestone_status as "Milestone Status"
+				completion_notes as "Completion Notes"
+				supporting_document as "Supporting Document"
+			)
+			conditional formatting
+			(
+				"New Formatting1"
+				{
+				condition = (milestone_status == "Completed")
+				fields = [milestone_status]
+				format = "color:#ffffff;background-color:#765f89;"
+				}
+				"New Formatting2"
+				{
+				condition = (milestone_status == "Delayed")
+				fields = [milestone_status]
+				format = "color:#000000;background-color:#1bbc9b;"
+				}
+				"New Formatting3"
+				{
+				condition = (milestone_status == "In Progress")
+				fields = [milestone_status]
+				format = "color:#ffffff;background-color:#e84c3d;"
+				}
+			)
+		}
+		kanban milestone_by_milestone_status
+		{
+			displayName = "Milestone Statuses"
+			show all rows from milestone    
+			(
+				project as "Project"
+				milestone_title as "Milestone Title"
+				milestone_description as "Milestone Description"
+				planned_date as "Planned Date"
+				actual_completion_date as "Actual Completion Date"
+				milestone_status as "Milestone Status"
+				completion_notes as "Completion Notes"
+				supporting_document as "Supporting Document"
+			)
+			options
+			(
+	 			display field = milestone_status
+	 		)
+		}
+		list project_Report
+		{
+			displayName = "All Projects"
+			show all rows from project    
+			(
+				project_title as "Project Title"
+				project_category as "Project Category"
+				project_description as "Project Description"
+				project_guide as "Project Guide"
+				team_members as "Team Members"
+				start_date as "Start Date"
+				target_deadline as "Target Deadline"
+				project_status as "Project Status"
+				overall_progress as "Overall Progress"
+				(
+					display = total,average,min,max	
+				)
+				priority as "Priority"
+				technology_stack as "Technology Stack"
+				repository_url as "Repository URL"
+				project_document as "Project Document"
+				final_report as "Final Report"
+				created_by as "Created By"
+			)
+			conditional formatting
+			(
+				"New Formatting1"
+				{
+				condition = (project_status == "In Progress")
+				fields = [project_status]
+				format = "color:#ffffff;background-color:#765f89;"
+				}
+				"New Formatting2"
+				{
+				condition = (project_status == "Planning")
+				fields = [project_status]
+				format = "color:#000000;background-color:#1bbc9b;"
+				}
+				"New Formatting3"
+				{
+				condition = (project_status == "Submitted")
+				fields = [project_status]
+				format = "color:#ffffff;background-color:#e84c3d;"
+				}
+			)
+		}
+		kanban project_by_project_category
+		{
+			displayName = "Project Categories"
+			show all rows from project    
+			(
+				project_title as "Project Title"
+				project_category as "Project Category"
+				project_description as "Project Description"
+				project_guide as "Project Guide"
+				team_members as "Team Members"
+				start_date as "Start Date"
+				target_deadline as "Target Deadline"
+				project_status as "Project Status"
+				overall_progress as "Overall Progress"
+				(
+					display = total,average,min,max	
+				)
+				priority as "Priority"
+				technology_stack as "Technology Stack"
+				repository_url as "Repository URL"
+				project_document as "Project Document"
+				final_report as "Final Report"
+				created_by as "Created By"
+			)
+			options
+			(
+	 			display field = project_category
+	 		)
+		}
+	}
+	pages
+	{
+		page DashBoard
+		{
+			displayname = "Dashboard"
+			Content="<zml    \t\t\n\t\t\n\t\t\n\t\t\n\t\t\n>\n\t<layout>\n\t<row>\n\t<column\n   \t\t width='25%'\n   \t>\n\t<panel elementName='Panel 1'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '0px'\n\tbgColor = '#F97164'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpaddingTop = '20px'\n\tpaddingLeft = '20px'\n\tpaddingRight = '0px'\n\tpaddingBottom = '20px'\n\tbgColor = 'transparent'\n\n\t\twidth = '64%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '0px'\n\tmarginRight = '0px' \n\tmarginTop = '8px'\n\tcolor = '#FFFFFF'\n\tsize = '24px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'transparent'\n\n\n\tdisplayType = 'actual'\n\tdecimalPlaces = '2'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t  value = 'thisapp.task.completion_percentage.avg'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '0px'\n\tmarginRight = '8px' \n\tmarginTop = '0px'\n\tcolor = '#FFFFFF'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'transparent'\n\n\n\n\n\n\n\t  value = 'Average Completion Percentages'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc><pc \n\t\tpadding = '20px'\n\tbgColor = 'transparent'\n\n\t\twidth = '36%'\n\t\thAlign = 'right'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '10px'\n\tmarginRight = '0px' \n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#C75A50'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'business-percentage-38'\n\tsize = '22px'\n\tcornerRadius = '10px'\n\ticonType = 'outline'\n/>\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column><column\n   \t\t width='24%'\n   \t>\n\t<panel elementName='Panel 2'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '0px'\n\tbgColor = '#EEA131'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpaddingTop = '20px'\n\tpaddingLeft = '20px'\n\tpaddingRight = '0px'\n\tpaddingBottom = '20px'\n\tbgColor = 'transparent'\n\n\t\twidth = '65%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\tpadding = '5px'\n\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#FFFFFF'\n\tsize = '24px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'transparent'\n\n\n\tdisplayType = 'actual'\n\tdecimalPlaces = '2'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t  value = 'thisapp.progress_update.progress_percentage.avg'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#FFFFFF'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'transparent'\n\n\n\n\n\n\n\t  value = 'Average Progress Percentages'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc><pc \n\t\tpadding = '20px'\n\tbgColor = 'transparent'\n\n\t\twidth = '35%'\n\t\thAlign = 'right'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '10px'\n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#BE8127'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'business-percentage-39'\n\tsize = '22px'\n\tcornerRadius = '10px'\n\ticonType = 'outline'\n/>\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column><column\n   \t\t width='25%'\n   \t>\n\t<panel elementName='Panel 3'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '0px'\n\tbgColor = '#00CFA9'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpaddingTop = '20px'\n\tpaddingLeft = '20px'\n\tpaddingRight = '0px'\n\tpaddingBottom = '20px'\n\tbgColor = 'transparent'\n\n\t\twidth = '65%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\tpadding = '5px'\n\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#FFFFFF'\n\tsize = '24px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\n\n\tdisplayType = 'actual'\n\tdecimalPlaces = '2'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t  value = 'thisapp.project.overall_progress.avg'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#FFFFFF'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'transparent'\n\n\n\n\n\n\n\t  value = 'Average Overall Progress'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc><pc \n\t\tpadding = '20px'\n\tbgColor = 'transparent'\n\n\t\twidth = '35%'\n\t\thAlign = 'right'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '10px'\n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#0BA385'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'business-percentage-39'\n\tsize = '22px'\n\tcornerRadius = '10px'\n\ticonType = 'outline'\n/>\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column><column\n   \t\t width='26%'\n   \t>\n\t<panel elementName='Panel 4'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '0px'\n\tbgColor = '#3E99DE'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpaddingTop = '20px'\n\tpaddingLeft = '20px'\n\tpaddingRight = '0px'\n\tpaddingBottom = '20px'\n\tbgColor = 'transparent'\n\n\t\twidth = '65%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\tpadding = '5px'\n\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#FFFFFF'\n\tsize = '24px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'transparent'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t  value = 'thisapp.task.ID.count'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#FFFFFF'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'transparent'\n\n\n\n\n\n\n\t  value = 'Total Tasks'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc><pc \n\t\tpadding = '20px'\n\tbgColor = 'transparent'\n\n\t\twidth = '35%'\n\t\thAlign = 'right'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '10px'\n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#0E78C9'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'travel-world'\n\tsize = '22px'\n\tcornerRadius = '10px'\n\ticonType = 'outline'\n/>\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column>\n</row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<panel elementName='Grouped_Panel 1'\n \n\t\n\ttitle = 'Priority'\n\t\n\t\ttitleSize = '15px'\n            boldTitle = 'true'\n\t\ttitleColor = '#222326'\n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '0px'\n\tbgColor = '#FFFFFF'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '20px'\n\tbgColor = '#FFFFFF'\n\n\t\twidth = '25%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '0px'\n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#F97164'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'clothes-shoe-woman'\n\tsize = '22px'\n\tcornerRadius = '20px'\n\ticonType = 'outline'\n/>\n</pc><pc \n\t\tpaddingLeft = '10px'\n\tbgColor = 'transparent'\n\n\t\thAlign = 'left'\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '10px'\n\tmarginRight = '0px' \n\tmarginBottom = '0px'\n\tcolor = '#C75A50'\n\tsize = '28px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'transparent'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t\tcriteria = 'priority == &quot;High&quot;'\n\t  value = 'thisapp.task.priority.count'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '10px'\n\tcolor = '#595959'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'transparent'\n\n\n\n\n\n\n\t  value = 'High'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc><pc \n\t\tpadding = '20px'\n\tbgColor = '#FFFFFF'\n\n\t\twidth = '25%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '0px'\n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#EEA131'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'envir-level'\n\tsize = '22px'\n\tcornerRadius = '20px'\n\ticonType = 'outline'\n/>\n</pc><pc \n\t\tpaddingLeft = '10px'\n\tbgColor = 'transparent'\n\n\t\thAlign = 'left'\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '10px'\n\tmarginRight = '0px' \n\tcolor = '#BE8127'\n\tsize = '28px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'transparent'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t\tcriteria = 'priority == &quot;Low&quot;'\n\t  value = 'thisapp.task.priority.count'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '10px'\n\tmarginRight = '0px' \n\tmarginTop = '0px'\n\tcolor = '#595959'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'transparent'\n\n\n\n\n\n\n\t  value = 'Low'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc><pc \n\t\tpadding = '20px'\n\tbgColor = 'transparent'\n\n\t\twidth = '25%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '0px'\n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#00CFA9'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'design-shapes'\n\tsize = '22px'\n\tcornerRadius = '20px'\n\ticonType = 'outline'\n/>\n</pc><pc \n\t\tpaddingLeft = '10px'\n\tbgColor = 'transparent'\n\n\t\thAlign = 'left'\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '10px'\n\tmarginRight = '0px' \n\tcolor = '#0BA385'\n\tsize = '28px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'transparent'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t\tcriteria = 'priority == &quot;Medium&quot;'\n\t  value = 'thisapp.task.priority.count'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '10px'\n\tmarginRight = '0px' \n\tmarginTop = '0px'\n\tcolor = '#595959'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'transparent'\n\n\n\n\n\n\n\t  value = 'Medium'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc><pc \n\t\tpadding = '20px'\n\tbgColor = 'transparent'\n\n\t\twidth = '25%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '0px'\n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#3E99DE'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'tech-watch-time'\n\tsize = '22px'\n\tcornerRadius = '20px'\n\ticonType = 'outline'\n/>\n</pc><pc \n\t\tpaddingLeft = '10px'\n\tbgColor = 'transparent'\n\n\t\thAlign = 'left'\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '10px'\n\tmarginRight = '0px' \n\tcolor = '#0E78C9'\n\tsize = '28px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'transparent'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t\tcriteria = 'priority == &quot;Critical&quot;'\n\t  value = 'thisapp.task.priority.count'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '10px'\n\tmarginRight = '0px' \n\tmarginTop = '0px'\n\tcolor = '#595959'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'transparent'\n\n\n\n\n\n\n\t  value = 'Critical'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column>\n</row><row>\n\t<column\n   \t\t width='50%'\n   \t>\n\t<chart \n\telementName='Chart 1'\n\n\t\n\ttitle = 'Estimated Hours by Completion Percentage'\n\t\n\t\ttitleSize = '16px'\n\t\ttitleColor = '#222326'\n\ttype = 'Scatter'\n\txtitle = 'Estimated Hours'\n\tytitle = 'Completion Percentage'\n\tbgColor = '#FFFFFF'\n\ttheme = '#F37D16'\n\tlegendPos = 'none'\n\theightType = 'auto'\n\theightValue = '300px'\n\tappLinkName = 'thisapp'\n\tformLinkName = 'task'\n\txfield = 'estimated_hours'\n\tyfields = 'value:completion_percentage'\n\tgroupBy = 'task_title'\n\t\tDelugeCriteria = 'estimated_hours is not null'\n/>\n\n</column><column\n   \t\t width='50%'\n   \t>\n\t<chart \n\telementName='Chart 2'\n\n\t\n\ttitle = 'Priority by Estimated Hours'\n\t\n\t\ttitleSize = '16px'\n\t\ttitleColor = '#222326'\n\ttype = 'Bar'\n\txtitle = 'Priority'\n\tytitle = 'Estimated Hours'\n\tbgColor = '#FFFFFF'\n\ttheme = 'theme1'\n\tlegendPos = 'none'\n\theightType = 'auto'\n\theightValue = '300px'\n\tappLinkName = 'thisapp'\n\tformLinkName = 'task'\n\txfield = 'priority'\n\tyfields = 'sum:estimated_hours'\n\tgroupBy = 'task_title'\n\t\tDelugeCriteria = 'priority is not null &amp;&amp; priority != &quot;&quot;'\n/>\n\n</column>\n</row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<report \n\telementName='Report'\n\n\t\tappLinkName = 'thisapp'\n\t\tlinkName = 'task_Report'\n\t\n\t\tiszreport = 'false'\n\t\t\t\t\tzc_AddRec = 'false'\n\t\t\t\t\tzc_EditRec = 'false'\n\t\t\t\t\tzc_Print = 'false'\n\t\t\t\t\tzc_Export = 'false'\n\t\t\t\t\tzc_DelRec = 'false'\n\t\t\t\t\tzc_DuplRec = 'false'\n\t\t\t\t\tzc_Search = 'false'\n\t\t\t\t\tzc_EditBulkRec = 'false'\n\t\t\t\t\tzc_BulkDelete = 'false'\n\t\t\t\t\tzc_BulkDuplicate = 'false'\n\theightType = 'auto'\n\theightValue = '700'\n/>\n</column>\n</row>\n</layout>\n</zml>"
+		}
+	}
+
+
+
+
+		workflow
+		{
+		form
+		{
+			auto_assign_project_guide as "Auto-assign Project Guide"
+			{
+				type =  form
+				form = project
+
+				record event = on add
+
+				on load
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											// Fetch the logged-in user's email
+										loggedInUserEmail = zoho.loginuserid;
+										// Check if the project guide field is empty before setting it
+										if(input.project_guide.isNull())
+										{
+											// Set the project guide to the logged-in user's email
+											input.project_guide = loggedInUserEmail;
+										}
+						)
+					}
+				}
+
+			}
+			block_critical_task_submission as "Block Critical Task Submission"
+			{
+				type =  form
+				form = task
+
+				record event = on add or edit
+
+				on validate
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											// Check if the task priority is Critical
+										if(input.priority == "Critical")
+										{
+											// Check if blocker description is empty or null
+											if(input.blocker_description.isBlank())
+											{
+												// Display alert message to user
+												alert "Critical tasks must have a blocker description. Please provide details before submitting.";
+												// Cancel the form submission
+												cancel submit;
+											}
+										}
+						)
+					}
+				}
+
+			}
+		}
+
+		schedule
+		{
+			weekly_project_deadline_reminder as "Weekly Project Deadline Reminder"
+			{
+				type =  schedule
+				form = project
+					status = inactive
+				start = target_deadline at "10:00:00"
+				time zone = "Asia/Kolkata"
+				on start
+				{
+					actions 
+					{
+					on load
+					(
+						// Fetch projects nearing their target deadline (within next 7 days)
+										projectsNearingDeadline = project[target_deadline in next 7 days && target_deadline >= zoho.currentdate];
+										// Check if there are any projects to notify about
+										if(projectsNearingDeadline.count() > 0)
+										{
+											// Build email message with project details
+											emailBody = "<h2>Projects Nearing Target Deadline</h2>";
+											emailBody = emailBody.concat("<p>The following projects are approaching their target deadlines:</p>");
+											emailBody = emailBody.concat("<ul>");
+											for each  project in projectsNearingDeadline
+											{
+												projectTitle = project.project_title;
+												targetDeadline = project.target_deadline;
+												projectStatus = project.project_status;
+												emailBody = emailBody.concat("<li>");
+												emailBody = emailBody.concat("<strong>").concat(projectTitle).concat("</strong> - Deadline: ");
+												emailBody = emailBody.concat(targetDeadline.toString("dd-MMM-yyyy")).concat(" (Status: ").concat(projectStatus).concat(")</li>");
+											}
+											emailBody = emailBody.concat("</ul>");
+											emailBody = emailBody.concat("<p>Please ensure all deliverables are completed on time.</p>");
+											// Send email to team
+											sendmail
+											[
+												from :zoho.loginuserid
+												to :zoho.loginuserid
+												subject :"Weekly Reminder: Projects Nearing Target Deadline"
+												message :emailBody
+												content type :HTML
+											]
+										}
+					)
+					}
+				}
+			}
+		}
+
+
+		blueprint
+		{
+    			task_execution_workflow as "Task Execution Workflow"
+    			{
+        			type = Blueprint
+        			form = task
+        			start
+        			{
+            			start stage = "Task Created"
+        			}
+        			stages
+        			{
+           			"Task Created"
+           			{
+           			}
+           			"Task Assigned"
+           			{
+           			}
+           			"Task Draft"
+           			{
+           			}
+           			"Task In Progress"
+           			{
+           			}
+           			"Task On Hold"
+           			{
+           			}
+           			"Task Reassigned"
+           			{
+           			}
+           			"Task In Review"
+           			{
+           			}
+           			"Task Reopened"
+           			{
+           			}
+           			"Task Cancelled"
+           			{
+           			}
+           			"Task Approved"
+           			{
+           			}
+           			"Task Completed"
+           			{
+           			}
+        			}
+        			transitions
+        			{
+    				approve_task as "Approve Task"
+    				{
+         				type = normal
+         				from stage = "Task In Review"
+         				to stage = "Task Approved"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				assign_task as "Assign Task"
+    				{
+         				type = normal
+         				from stage = "Task Created"
+         				to stage = "Task Assigned"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				cancel_task as "Cancel Task"
+    				{
+         				type = normal
+         				from stage = "Task On Hold"
+         				to stage = "Task Cancelled"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				confirm_new_assignment as "Confirm New Assignment"
+    				{
+         				type = normal
+         				from stage = "Task Reassigned"
+         				to stage = "Task Assigned"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				edit_task as "Edit Task Details"
+    				{
+         				type = normal
+         				from stage = "Task Draft"
+         				to stage = "Task Created"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				hold_task as "Place Task On Hold"
+    				{
+         				type = normal
+         				from stage = "Task Assigned"
+         				to stage = "Task On Hold"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				mark_completed as "Mark as Completed"
+    				{
+         				type = normal
+         				from stage = "Task Approved"
+         				to stage = "Task Completed"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				pause_review as "Pause Review"
+    				{
+         				type = normal
+         				from stage = "Task In Review"
+         				to stage = "Task On Hold"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				pause_task as "Pause Task"
+    				{
+         				type = normal
+         				from stage = "Task In Progress"
+         				to stage = "Task On Hold"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				reassign_task as "Reassign Task"
+    				{
+         				type = normal
+         				from stage = "Task Assigned"
+         				to stage = "Task Reassigned"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				reopen_minor_fixes as "Reopen for Minor Fixes"
+    				{
+         				type = normal
+         				from stage = "Task Approved"
+         				to stage = "Task Reopened"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				request_changes as "Request Changes"
+    				{
+         				type = normal
+         				from stage = "Task In Review"
+         				to stage = "Task Reopened"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				request_revision as "Request Revision"
+    				{
+         				type = normal
+         				from stage = "Task In Progress"
+         				to stage = "Task Reopened"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				resubmit_review as "Resubmit for Review"
+    				{
+         				type = normal
+         				from stage = "Task Reopened"
+         				to stage = "Task In Review"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				resume_task as "Resume Task"
+    				{
+         				type = normal
+         				from stage = "Task On Hold"
+         				to stage = "Task In Progress"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				resume_work as "Resume Work"
+    				{
+         				type = normal
+         				from stage = "Task Reopened"
+         				to stage = "Task In Progress"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				save_draft as "Save as Draft"
+    				{
+         				type = normal
+         				from stage = "Task Created"
+         				to stage = "Task Draft"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				start_task as "Start Task"
+    				{
+         				type = normal
+         				from stage = "Task Assigned"
+         				to stage = "Task In Progress"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				submit_for_assignment as "Submit for Assignment"
+    				{
+         				type = normal
+         				from stage = "Task Draft"
+         				to stage = "Task Assigned"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				submit_review as "Submit for Review"
+    				{
+         				type = normal
+         				from stage = "Task In Progress"
+         				to stage = "Task In Review"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+        			}
+    			}
+    			project_lifecycle_management as "Project Lifecycle Management"
+    			{
+        			type = Blueprint
+        			form = project
+        			start
+        			{
+            			start stage = "Project Initiated"
+        			}
+        			stages
+        			{
+           			"Project Initiated"
+           			{
+           			}
+           			"Planning Phase"
+           			{
+           			}
+           			"Project Rejected"
+           			{
+           			}
+           			"In Progress"
+           			{
+           			}
+           			"Under Review"
+           			{
+           			}
+           			"On Hold"
+           			{
+           			}
+           			"Final Report Submitted"
+           			{
+           			}
+           			"Final Review"
+           			{
+           			}
+           			"Completed"
+           			{
+           			}
+        			}
+        			transitions
+        			{
+    				approve_final as "Approve Final Project"
+    				{
+         				type = normal
+         				from stage = "Final Review"
+         				to stage = "Completed"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				approve_plan as "Approve Project Plan"
+    				{
+         				type = normal
+         				from stage = "Planning Phase"
+         				to stage = "In Progress"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				approve_review as "Approve Review"
+    				{
+         				type = normal
+         				from stage = "Under Review"
+         				to stage = "In Progress"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				pause_project as "Pause Project"
+    				{
+         				type = normal
+         				from stage = "In Progress"
+         				to stage = "On Hold"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				reject_final_report as "Reject Final Report"
+    				{
+         				type = normal
+         				from stage = "Final Review"
+         				to stage = "Final Report Submitted"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				reject_project as "Reject Project"
+    				{
+         				type = normal
+         				from stage = "Project Initiated"
+         				to stage = "Project Rejected"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				reopen_changes as "Reopen for Changes"
+    				{
+         				type = normal
+         				from stage = "In Progress"
+         				to stage = "Planning Phase"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				request_corrections as "Request Corrections"
+    				{
+         				type = normal
+         				from stage = "Under Review"
+         				to stage = "In Progress"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				request_final_revision as "Request Final Report Revision"
+    				{
+         				type = normal
+         				from stage = "Final Report Submitted"
+         				to stage = "In Progress"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				request_revisions as "Request Revisions"
+    				{
+         				type = normal
+         				from stage = "Planning Phase"
+         				to stage = "Project Initiated"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				resume_project as "Resume Project"
+    				{
+         				type = normal
+         				from stage = "On Hold"
+         				to stage = "In Progress"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				submit_final_report as "Submit Final Report"
+    				{
+         				type = normal
+         				from stage = "Final Report Submitted"
+         				to stage = "Final Review"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				submit_for_review as "Submit for Review"
+    				{
+         				type = normal
+         				from stage = "In Progress"
+         				to stage = "Under Review"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				submit_proposal as "Submit Project Proposal"
+    				{
+         				type = normal
+         				from stage = "Project Initiated"
+         				to stage = "Planning Phase"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				terminate_project as "Terminate Project"
+    				{
+         				type = normal
+         				from stage = "On Hold"
+         				to stage = "Project Rejected"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+        			}
+    			}
+		}
+
+
+	}
+	share_settings
+	{
+			"Read"
+			{
+				name = "Read"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have read permission for all components\n"
+			}
+			"Write"
+			{
+				name = "Write"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have write permission for all components\n"
+			}
+			"Student Project Lead"
+			{
+				name = "Student Project Lead"
+				type = Users_Permissions
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Create new academic projects and define the initial scope and technology stack \n"
+				ModulePermissions
+				{
+					task
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							task_by_task_status={"View","Edit","Delete"}
+							task_Report={"View","Edit","Delete"}
+						}
+					}
+					milestone
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							milestone_Report={"View","Edit","Delete"}
+							milestone_by_milestone_status={"View","Edit","Delete"}
+						}
+					}
+					student_profile
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							student_profile_by_department={"View"}
+							student_profile_Report={"View"}
+						}
+					}
+					meeting_notes
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							meeting_notes_by_meeting_type={"View"}
+							meeting_notes_Report={"View"}
+						}
+					}
+					progress_update
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							progress_update_Report={"View","Edit","Delete"}
+						}
+					}
+					project
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							project_by_project_category={"View","Edit","Delete"}
+							project_Report={"View","Edit","Delete"}
+						}
+					}
+				}
+			}
+			"Administrator"
+			{
+				name = "Administrator"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have all the permissions.\n"
+			}
+			"Project Guide"
+			{
+				name = "Project Guide"
+				type = Users_Permissions
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Review project proposals and assign mentorship to student teams \n"
+				ModulePermissions
+				{
+					meeting_notes
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							meeting_notes_by_meeting_type={"View"}
+							meeting_notes_Report={"View"}
+						}
+					}
+					project
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							project_by_project_category={"View","Edit","Delete"}
+							project_Report={"View","Edit","Delete"}
+						}
+					}
+					task
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							task_by_task_status={"View"}
+							task_Report={"View"}
+						}
+					}
+					milestone
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							milestone_Report={"View"}
+							milestone_by_milestone_status={"View"}
+						}
+					}
+					student_profile
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							student_profile_by_department={"View"}
+							student_profile_Report={"View"}
+						}
+					}
+				}
+			}
+			"Department Coordinator"
+			{
+				name = "Department Coordinator"
+				type = Users_Permissions
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Monitor all active projects within their specific academic department \n"
+				ModulePermissions
+				{
+					task
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							task_by_task_status={"View"}
+							task_Report={"View"}
+						}
+					}
+					milestone
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							milestone_Report={"View"}
+							milestone_by_milestone_status={"View"}
+						}
+					}
+					student_profile
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							student_profile_by_department={"View"}
+							student_profile_Report={"View"}
+						}
+					}
+					meeting_notes
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							meeting_notes_by_meeting_type={"View"}
+							meeting_notes_Report={"View"}
+						}
+					}
+					progress_update
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							progress_update_Report={"View"}
+						}
+					}
+					project
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							project_by_project_category={"View"}
+							project_Report={"View"}
+						}
+					}
+				}
+			}
+			"Developer"
+			{
+				name = "Developer"
+				type = Developer
+				permissions = {Chat:false, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Developer Profile\n"
+			}
+			"Team Member"
+			{
+				name = "Team Member"
+				type = Users_Permissions
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "View assigned tasks and update their individual completion percentages \n"
+				ModulePermissions
+				{
+					task
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							task_by_task_status={"View","Edit","Delete"}
+							task_Report={"View","Edit","Delete"}
+						}
+					}
+					milestone
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							milestone_Report={"View"}
+							milestone_by_milestone_status={"View"}
+						}
+					}
+					student_profile
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							student_profile_by_department={"View"}
+							student_profile_Report={"View"}
+						}
+					}
+					meeting_notes
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							meeting_notes_by_meeting_type={"View"}
+							meeting_notes_Report={"View"}
+						}
+					}
+					progress_update
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							progress_update_Report={"View","Edit","Delete"}
+						}
+					}
+					project
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							project_by_project_category={"View"}
+							project_Report={"View"}
+						}
+					}
+				}
+			}
+			"Alumni Mentor"
+			{
+				name = "Alumni Mentor"
+				type = Customer_Portal
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Participate in mentor review meetings and provide industry insights \n"
+				ModulePermissions
+				{
+					task
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							task_by_task_status={"View"}
+							task_Report={"View"}
+						}
+					}
+					milestone
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							milestone_Report={"View"}
+							milestone_by_milestone_status={"View"}
+						}
+					}
+					student_profile
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							student_profile_by_department={"View"}
+							student_profile_Report={"View"}
+						}
+					}
+					meeting_notes
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							meeting_notes_by_meeting_type={"View"}
+							meeting_notes_Report={"View"}
+						}
+					}
+					progress_update
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							progress_update_Report={"View"}
+						}
+					}
+					project
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							project_by_project_category={"View"}
+							project_Report={"View"}
+						}
+					}
+				}
+			}
+			"Guest Reviewer"
+			{
+				name = "Guest Reviewer"
+				type = Customer_Portal
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Access final project reports and supporting documents for evaluation \n"
+				ModulePermissions
+				{
+					meeting_notes
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							meeting_notes_by_meeting_type={"View"}
+							meeting_notes_Report={"View"}
+						}
+					}
+					project
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							project_by_project_category={"View"}
+							project_Report={"View"}
+						}
+					}
+					milestone
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							milestone_Report={"View"}
+							milestone_by_milestone_status={"View"}
+						}
+					}
+					student_profile
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							student_profile_by_department={"View"}
+							student_profile_Report={"View"}
+						}
+					}
+				}
+			}
+			"Customer"
+			{
+				name = "Customer"
+				type = Customer_Portal
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This is the default profile having only add and view permission.\n"
+			}
+			roles
+			{
+				"CEO"
+				{
+					description = "User belonging to this role can access data of all other users."
+				}
+			}
+	}
+
+
+	web
+	{
+		forms
+		{
+			form meeting_notes
+			{
+				label placement = left
+			}
+			form milestone
+			{
+				label placement = left
+			}
+			form progress_update
+			{
+				label placement = left
+			}
+			form project
+			{
+				label placement = left
+			}
+			form student_profile
+			{
+				label placement = left
+			}
+			form task
+			{
+				label placement = left
+			}
+		}
+		reports
+		{
+			report task_Report
+			{
+				quickview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								task_title as "Task Title"
+								project as "Project"
+								task_description as "Task Description"
+								assigned_student as "Assigned Student"
+								created_date as "Created Date"
+								start_date as "Start Date"
+								due_date as "Due Date"
+								task_status as "Task Status"
+								priority as "Priority"
+								completion_percentage as "Completion Percentage"
+								estimated_hours as "Estimated Hours"
+								actual_hours as "Actual Hours"
+								blocker_description as "Blocker Description"
+								task_attachment as "Task Attachment"
+								mentor_comments as "Mentor Comments"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+								Add 
+								Import 
+								Export 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+		     				title = "Overview"
+							fields
+							(
+								task_title as "Task Title"
+								project as "Project"
+								task_description as "Task Description"
+								assigned_student as "Assigned Student"
+								created_date as "Created Date"
+								start_date as "Start Date"
+								due_date as "Due Date"
+								task_status as "Task Status"
+								priority as "Priority"
+								completion_percentage as "Completion Percentage"
+								estimated_hours as "Estimated Hours"
+								actual_hours as "Actual Hours"
+								blocker_description as "Blocker Description"
+								task_attachment as "Task Attachment"
+								mentor_comments as "Mentor Comments"
+							)
+						)
+						datablock2
+						(
+		     				title = "Project"
+		     				related field = project
+							fields
+							(
+								project_title as "Project Title"
+								project_category as "Project Category"
+								project_description as "Project Description"
+								project_guide as "Project Guide"
+								team_members as "Team Members"
+								start_date as "Start Date"
+								target_deadline as "Target Deadline"
+								project_status as "Project Status"
+								overall_progress as "Overall Progress"
+								priority as "Priority"
+								technology_stack as "Technology Stack"
+								repository_url as "Repository URL"
+								project_document as "Project Document"
+								final_report as "Final Report"
+								created_by as "Created By"
+							)
+						)
+						datablock3
+						(
+		     				title = "Assigned Student"
+		     				related field = assigned_student
+							fields
+							(
+								full_name as "Full Name"
+								college_email as "College Email"
+								department as "Department"
+								year_of_study as "Year of Study"
+								section as "Section"
+								skills as "Skills"
+								profile_photo as "Profile Photo"
+								created_by as "Created By"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+							)
+						)
+				)
+			}
+			report task_by_task_status
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = 1
+							fields
+							(
+								task_title as "Task Title"
+								project as "Project"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+								Add 
+								Import 
+								Export 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								task_title as "Task Title"
+								project as "Project"
+								task_description as "Task Description"
+								assigned_student as "Assigned Student"
+								created_date as "Created Date"
+								start_date as "Start Date"
+								due_date as "Due Date"
+								task_status as "Task Status"
+								priority as "Priority"
+								completion_percentage as "Completion Percentage"
+								estimated_hours as "Estimated Hours"
+								actual_hours as "Actual Hours"
+								blocker_description as "Blocker Description"
+								task_attachment as "Task Attachment"
+								mentor_comments as "Mentor Comments"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+							)
+						)
+				)
+			}
+			report progress_update_Report
+			{
+				quickview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								project as "Project"
+								related_task as "Related Task"
+								updated_by as "Updated By"
+								update_date as "Update Date"
+								progress_percentage as "Progress Percentage"
+								work_completed as "Work Completed"
+								next_steps as "Next Steps"
+								challenges_faced as "Challenges Faced"
+								help_required as "Help Required"
+								supporting_file as "Supporting File"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+								Add 
+								Import 
+								Export 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+		     				title = "Overview"
+							fields
+							(
+								project as "Project"
+								related_task as "Related Task"
+								updated_by as "Updated By"
+								update_date as "Update Date"
+								progress_percentage as "Progress Percentage"
+								work_completed as "Work Completed"
+								next_steps as "Next Steps"
+								challenges_faced as "Challenges Faced"
+								help_required as "Help Required"
+								supporting_file as "Supporting File"
+							)
+						)
+						datablock2
+						(
+		     				title = "Project"
+		     				related field = project
+							fields
+							(
+								project_title as "Project Title"
+								project_category as "Project Category"
+								project_description as "Project Description"
+								project_guide as "Project Guide"
+								team_members as "Team Members"
+								start_date as "Start Date"
+								target_deadline as "Target Deadline"
+								project_status as "Project Status"
+								overall_progress as "Overall Progress"
+								priority as "Priority"
+								technology_stack as "Technology Stack"
+								repository_url as "Repository URL"
+								project_document as "Project Document"
+								final_report as "Final Report"
+								created_by as "Created By"
+							)
+						)
+						datablock3
+						(
+		     				title = "Related Task"
+		     				related field = related_task
+							fields
+							(
+								task_title as "Task Title"
+								project as "Project"
+								task_description as "Task Description"
+								assigned_student as "Assigned Student"
+								created_date as "Created Date"
+								start_date as "Start Date"
+								due_date as "Due Date"
+								task_status as "Task Status"
+								priority as "Priority"
+								completion_percentage as "Completion Percentage"
+								estimated_hours as "Estimated Hours"
+								actual_hours as "Actual Hours"
+								blocker_description as "Blocker Description"
+								task_attachment as "Task Attachment"
+								mentor_comments as "Mentor Comments"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+							)
+						)
+				)
+			}
+			report meeting_notes_Report
+			{
+				quickview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								project as "Project"
+								meeting_date as "Meeting Date"
+								meeting_type as "Meeting Type"
+								attendees as "Attendees"
+								agenda as "Agenda"
+								discussion_notes as "Discussion Notes"
+								decisions_made as "Decisions Made"
+								action_items as "Action Items"
+								next_meeting_date as "Next Meeting Date"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+								Add 
+								Import 
+								Export 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+		     				title = "Overview"
+							fields
+							(
+								project as "Project"
+								meeting_date as "Meeting Date"
+								meeting_type as "Meeting Type"
+								attendees as "Attendees"
+								agenda as "Agenda"
+								discussion_notes as "Discussion Notes"
+								decisions_made as "Decisions Made"
+								action_items as "Action Items"
+								next_meeting_date as "Next Meeting Date"
+							)
+						)
+						datablock2
+						(
+		     				title = "Attendees"
+		     				related field = attendees
+							fields
+							(
+								full_name as "Full Name"
+								college_email as "College Email"
+								department as "Department"
+								year_of_study as "Year of Study"
+								section as "Section"
+								skills as "Skills"
+								profile_photo as "Profile Photo"
+								created_by as "Created By"
+							)
+						)
+						datablock3
+						(
+		     				title = "Project"
+		     				related field = project
+							fields
+							(
+								project_title as "Project Title"
+								project_category as "Project Category"
+								project_description as "Project Description"
+								project_guide as "Project Guide"
+								team_members as "Team Members"
+								start_date as "Start Date"
+								target_deadline as "Target Deadline"
+								project_status as "Project Status"
+								overall_progress as "Overall Progress"
+								priority as "Priority"
+								technology_stack as "Technology Stack"
+								repository_url as "Repository URL"
+								project_document as "Project Document"
+								final_report as "Final Report"
+								created_by as "Created By"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+							)
+						)
+				)
+			}
+			report meeting_notes_by_meeting_type
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = 1
+							fields
+							(
+								project as "Project"
+								meeting_date as "Meeting Date"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+								Add 
+								Import 
+								Export 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								project as "Project"
+								meeting_date as "Meeting Date"
+								meeting_type as "Meeting Type"
+								attendees as "Attendees"
+								agenda as "Agenda"
+								discussion_notes as "Discussion Notes"
+								decisions_made as "Decisions Made"
+								action_items as "Action Items"
+								next_meeting_date as "Next Meeting Date"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+							)
+						)
+				)
+			}
+			report student_profile_Report
+			{
+				quickview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								full_name as "Full Name"
+								college_email as "College Email"
+								department as "Department"
+								year_of_study as "Year of Study"
+								section as "Section"
+								skills as "Skills"
+								profile_photo as "Profile Photo"
+								created_by as "Created By"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+								Add 
+								Import 
+								Export 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+		     				title = "Overview"
+							fields
+							(
+								full_name as "Full Name"
+								college_email as "College Email"
+								department as "Department"
+								year_of_study as "Year of Study"
+								section as "Section"
+								skills as "Skills"
+								profile_photo as "Profile Photo"
+								created_by as "Created By"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+							)
+						)
+				)
+			}
+			report student_profile_by_department
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = 1
+							fields
+							(
+								full_name as "Full Name"
+								section as "Section"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+								Add 
+								Import 
+								Export 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								full_name as "Full Name"
+								college_email as "College Email"
+								department as "Department"
+								year_of_study as "Year of Study"
+								section as "Section"
+								skills as "Skills"
+								profile_photo as "Profile Photo"
+								created_by as "Created By"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+							)
+						)
+				)
+			}
+			report milestone_Report
+			{
+				quickview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								project as "Project"
+								milestone_title as "Milestone Title"
+								milestone_description as "Milestone Description"
+								planned_date as "Planned Date"
+								actual_completion_date as "Actual Completion Date"
+								milestone_status as "Milestone Status"
+								completion_notes as "Completion Notes"
+								supporting_document as "Supporting Document"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+								Add 
+								Import 
+								Export 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+		     				title = "Overview"
+							fields
+							(
+								project as "Project"
+								milestone_title as "Milestone Title"
+								milestone_description as "Milestone Description"
+								planned_date as "Planned Date"
+								actual_completion_date as "Actual Completion Date"
+								milestone_status as "Milestone Status"
+								completion_notes as "Completion Notes"
+								supporting_document as "Supporting Document"
+							)
+						)
+						datablock2
+						(
+		     				title = "Project"
+		     				related field = project
+							fields
+							(
+								project_title as "Project Title"
+								project_category as "Project Category"
+								project_description as "Project Description"
+								project_guide as "Project Guide"
+								team_members as "Team Members"
+								start_date as "Start Date"
+								target_deadline as "Target Deadline"
+								project_status as "Project Status"
+								overall_progress as "Overall Progress"
+								priority as "Priority"
+								technology_stack as "Technology Stack"
+								repository_url as "Repository URL"
+								project_document as "Project Document"
+								final_report as "Final Report"
+								created_by as "Created By"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+							)
+						)
+				)
+			}
+			report milestone_by_milestone_status
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = 1
+							fields
+							(
+								milestone_title as "Milestone Title"
+								project as "Project"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+								Add 
+								Import 
+								Export 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								project as "Project"
+								milestone_title as "Milestone Title"
+								milestone_description as "Milestone Description"
+								planned_date as "Planned Date"
+								actual_completion_date as "Actual Completion Date"
+								milestone_status as "Milestone Status"
+								completion_notes as "Completion Notes"
+								supporting_document as "Supporting Document"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+							)
+						)
+				)
+			}
+			report project_Report
+			{
+				quickview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								project_title as "Project Title"
+								project_category as "Project Category"
+								project_description as "Project Description"
+								project_guide as "Project Guide"
+								team_members as "Team Members"
+								start_date as "Start Date"
+								target_deadline as "Target Deadline"
+								project_status as "Project Status"
+								overall_progress as "Overall Progress"
+								priority as "Priority"
+								technology_stack as "Technology Stack"
+								repository_url as "Repository URL"
+								project_document as "Project Document"
+								final_report as "Final Report"
+								created_by as "Created By"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+								Add 
+								Import 
+								Export 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+		     				title = "Overview"
+							fields
+							(
+								project_title as "Project Title"
+								project_category as "Project Category"
+								project_description as "Project Description"
+								project_guide as "Project Guide"
+								team_members as "Team Members"
+								start_date as "Start Date"
+								target_deadline as "Target Deadline"
+								project_status as "Project Status"
+								overall_progress as "Overall Progress"
+								priority as "Priority"
+								technology_stack as "Technology Stack"
+								repository_url as "Repository URL"
+								project_document as "Project Document"
+								final_report as "Final Report"
+								created_by as "Created By"
+							)
+						)
+						datablock2
+						(
+		     				title = "Team Members"
+		     				related field = team_members
+							fields
+							(
+								full_name as "Full Name"
+								college_email as "College Email"
+								department as "Department"
+								year_of_study as "Year of Study"
+								section as "Section"
+								skills as "Skills"
+								profile_photo as "Profile Photo"
+								created_by as "Created By"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+							)
+						)
+				)
+			}
+			report project_by_project_category
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = 1
+							fields
+							(
+								project_title as "Project Title"
+								project_guide as "Project Guide"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+								Add 
+								Import 
+								Export 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								project_title as "Project Title"
+								project_category as "Project Category"
+								project_description as "Project Description"
+								project_guide as "Project Guide"
+								team_members as "Team Members"
+								start_date as "Start Date"
+								target_deadline as "Target Deadline"
+								project_status as "Project Status"
+								overall_progress as "Overall Progress"
+								priority as "Priority"
+								technology_stack as "Technology Stack"
+								repository_url as "Repository URL"
+								project_document as "Project Document"
+								final_report as "Final Report"
+								created_by as "Created By"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+							)
+						)
+				)
+			}
+		}
+		menu
+		{
+			space Space
+			{
+				displayname = "Space"
+				icon = "objects-spaceship"
+
+				section Section_1
+				{
+					displayname = "Dashboard"
+					icon = "ui-1-dashboard-half"
+					page DashBoard
+					{
+						icon = "ui-1-dashboard-half"
+					}
+				}
+				section Section_2
+				{
+					displayname = "Tasks"
+					icon = "business-notes"
+					form  task
+					{
+						icon = "ui-1-bold-add"
+					}
+					report task_Report
+					{
+						icon = "travel-world"
+					}
+					report task_by_task_status
+					{
+						icon = "design-todo"
+					}
+				}
+				section Section_3
+				{
+					displayname = "Progress Updates"
+					icon = "users-2-a-edit"
+					form  progress_update
+					{
+						icon = "ui-1-bold-add"
+					}
+					report progress_update_Report
+					{
+						icon = "loader-refresh"
+					}
+				}
+				section Section_4
+				{
+					displayname = "Notes"
+					icon = "business-notes"
+					form  meeting_notes
+					{
+						icon = "ui-1-bold-add"
+					}
+					report meeting_notes_Report
+					{
+						icon = "travel-world"
+					}
+					report meeting_notes_by_meeting_type
+					{
+						icon = "business-board-27"
+					}
+				}
+				section Section_5
+				{
+					displayname = "Student Profiles"
+					icon = "education-pencil-47"
+					form  student_profile
+					{
+						icon = "ui-1-bold-add"
+					}
+					report student_profile_Report
+					{
+						icon = "travel-world"
+					}
+					report student_profile_by_department
+					{
+						icon = "business-hierarchy-53"
+					}
+				}
+				section Section_6
+				{
+					displayname = "Milestones"
+					icon = "tech-desktop"
+					form  milestone
+					{
+						icon = "ui-1-bold-add"
+					}
+					report milestone_Report
+					{
+						icon = "travel-world"
+					}
+					report milestone_by_milestone_status
+					{
+						icon = "health-heartbeat-16"
+					}
+				}
+				section Section_7
+				{
+					displayname = "Projects"
+					icon = "education-books-46"
+					form  project
+					{
+						icon = "ui-1-bold-add"
+					}
+					report project_Report
+					{
+						icon = "travel-world"
+					}
+					report project_by_project_category
+					{
+						icon = "education-books-46"
+					}
+				}
+				section ZC_App_Preferences
+				{
+					displayname = "App Preferences"
+					icon = "design-app"
+					systemcomponent
+					{
+						type = localization
+						displayname = "Language Selection"
+						icon = "education-language"
+					}
+					systemcomponent
+					{
+						type = connection
+						displayname = "Integrations"
+						icon = "tech-2-connection"
+					}
+				}
+				section ZC_Approvals
+				{
+					displayname = "Approvals"
+					icon = "ui-2-hourglass"
+					systemcomponent
+					{
+						type = approval
+						approval status = pending
+						displayname = "Pending Tasks"
+						icon = "ui-2-hourglass"
+					}
+					systemcomponent
+					{
+						type = approval
+						approval status = completed
+						displayname = "Completed Tasks"
+						icon = "design-todo"
+					}
+				}
+				section SharedAnalytics_Section
+				{
+					type = shared_user_report_section
+					displayname = "Reports"
+					icon = "business-chart-bar-33"
+				}
+			}
+			preference
+			{
+				icon
+				{
+					style = solid
+					show = {space,section,component}
+				}
+			}
+		}
+		customize
+		{
+			new theme = 11
+			font = "poppins"
+			color options
+			{
+				color = "2"
+			}
+			logo
+			{
+				preference = "none"
+				placement = "left"
+			}
+		}
+	}
+	phone
+	{
+		forms
+		{
+			form meeting_notes
+			{
+				label placement = auto
+			}
+			form milestone
+			{
+				label placement = auto
+			}
+			form progress_update
+			{
+				label placement = auto
+			}
+			form project
+			{
+				label placement = auto
+			}
+			form student_profile
+			{
+				label placement = auto
+			}
+			form task
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = twocolumn
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = chryslerpurple
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	tablet
+	{
+		forms
+		{
+			form meeting_notes
+			{
+				label placement = auto
+			}
+			form milestone
+			{
+				label placement = auto
+			}
+			form progress_update
+			{
+				label placement = auto
+			}
+			form project
+			{
+				label placement = auto
+			}
+			form student_profile
+			{
+				label placement = auto
+			}
+			form task
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = amethyst
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	translation
+{
+{"Language_Settings":{"LANGAGUE_WITH_LOGIN":"browser"}}
+}
+}
